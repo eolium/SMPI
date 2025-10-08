@@ -14,7 +14,7 @@ public class Main {
             switch (args[0]) {
                 case "--start" -> {
                     if(args.length == 3) {
-                        signIn(args[1], args[3]);
+                        signIn(args[1], args[2]);
                     } else {
                         throw new Exception("Spécifier pseudo & mot de passe.");
                     }
