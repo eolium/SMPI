@@ -1,5 +1,8 @@
 package mpi.aweirdwhale;
 
+import mpi.aweirdwhale.utils.Uninstal;
+
+import static mpi.aweirdwhale.installer.SetUp.downloadFiles;
 import static mpi.aweirdwhale.login.Login.signIn;
 
 public class Main {
@@ -21,7 +24,11 @@ public class Main {
                 }
 
                 case "--uninstall" -> {
-                    return;
+                    Uninstal.clean();
+                }
+
+                case "--download" -> {
+                    downloadFiles();
                 }
             }
 
