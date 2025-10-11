@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import static mpi.aweirdwhale.installer.SetUp.downloadFiles;
+
 public class LaunchGame {
     public static void getDir(String username) {
         /**
@@ -106,6 +108,8 @@ public class LaunchGame {
             Process process = builder.start();
             process.waitFor();
         } catch (InterruptedException | IOException _) {
+            downloadFiles();
+            launchMinecraft(maxRam, minRam, ClassPaths, username, gameDir, uuid_path); // idée de merde je le dis haut et fort
             throw new RuntimeException("x Erreur lors du lancement du jeu.");
         }
     }
