@@ -27,6 +27,7 @@ public class Login {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         // Configure the request
+        /* y'a pas une méthode httpsMethode ? */
         connection.setRequestMethod(httpMethode);
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setDoOutput(true);
@@ -64,12 +65,17 @@ public class Login {
             e.printStackTrace();
         }
 
-        return password;
+        return password; /* Tu retournes le mdp en clair si pas d'algo sha256 ??? */
 
     }
 
     public static void signIn(String username, String password) {
         // digest password :
+        /*
+            hasher le mdp avant de l'envoyer n'a aucun intérêt (ça n'améliore pas du tout la sécurité), tu dois le hasher sur le serveur
+            en revanche tu dois le chiffrer, au moins en AES, si possible en RSA avec une clé sur le serveur (aller voir la lib openssl pour chiffrer)
+            A la rigueur, tu peux peut-être ajouter au hash un code généré pour le rendre unique si t'as la flm, en mode JCS de wish
+        */
         String pwd = digest(password);
 
         String url = SERVER_URL + PORT;
@@ -88,6 +94,7 @@ public class Login {
             if (code == 200){
                 getDir(username); // launch mc
             } else {
+                /* Pourquoi t'as mis un caractère spécial sur le x ? */
                 System.out.println("⤫ Erreur lors de la connexion (probablement mauvais mdp)");
             }
 

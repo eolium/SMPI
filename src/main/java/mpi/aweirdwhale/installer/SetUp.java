@@ -47,6 +47,8 @@ public class SetUp {
                 Files.copy(in, tempZip, StandardCopyOption.REPLACE_EXISTING);
             }
 
+            /* Si pas de HTTPS, ça pourrait peut-être être une bonne idée de faire un hash du zip pour éviter un man in the middle */
+
             System.out.println("Fichier téléchargé : " + tempZip);
 
             // Décompresser le ZIP dans le dossier cible
@@ -104,7 +106,7 @@ public class SetUp {
         return path;
     }
 
-    public static String createGameDirectory() {
+    public static String createGameDirectory() { /* mal nommée, il faudrait échanger de nom getGameDirectory et createGameDirectory (oui je sais) */
         String home = System.getProperty("user.home"); // root
         String os = System.getProperty("os.name").toLowerCase(); // diff unix / windows
 

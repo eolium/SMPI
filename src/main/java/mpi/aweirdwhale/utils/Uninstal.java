@@ -12,8 +12,8 @@ public class Uninstal {
 
 
         Path targetDir;
-            if (osName.contains("win")) {
-                String appData = System.getenv("APPDATA");
+            if (osName.contains("win")) { /* retourne true pour darwin (MacOS), il faudrait faire une fonction getOs(), qui vérifie plus de trucs */
+                String appData = System.getenv("APPDATA"); /* Pourquoi ne pas toujours mettre le dossier dans userHome (et éviter les if/then/else) */
                 if (appData != null) {
                     targetDir = Paths.get(appData, ".smp2ix");
                 } else {
